@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+		<title>GESTÃO PREDIAL</title>
+		
+		<link rel="shortcut icon" href="img/favicon.ico">
+		
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	
+		<style>
+           
+          .form-control{min-width:300px;}
+            
+        </style>
+		
+		
+		<script type="text/javascript">
+		function tableToCSV() {
+
+			// Variable to store the final csv data
+			var csv_data = [];
+
+			// Get each row data
+			var rows = document.getElementsByTagName('tr');
+			for (var i = 0; i < rows.length; i++) {
+
+				// Get each column data
+				var cols = rows[i].querySelectorAll('checkbox');
+
+				// Stores each csv row data
+				var csvrow = [];
+				for (var j = 0; j < cols.length; j++) {
+
+					// Get the text data of each cell
+					// of a row and push it to csvrow
+					csvrow.push(cols[j].innerHTML);
+				}
+
+				// Combine each column value with comma
+				csv_data.push(csvrow.join(","));
+			}
+
+			// Combine each row data with new line character
+			csv_data = csv_data.join('\n');
+
+			// Call this function to download csv file
+			downloadCSVFile(csv_data);
+
+		}
+
+		function downloadCSVFile(csv_data) {
+
+			// Create CSV file object and feed
+			// our csv_data into it
+			CSVFile = new Blob([csv_data], {
+				type: "text/csv"
+			});
+
+			// Create to temporary link to initiate
+			// download process
+			var temp_link = document.createElement('a');
+
+			// Download csv file
+			temp_link.download = "GfG.csv";
+			var url = window.URL.createObjectURL(CSVFile);
+			temp_link.href = url;
+
+			// This link should not be displayed
+			temp_link.style.display = "none";
+			document.body.appendChild(temp_link);
+
+			// Automatically click the link to
+			// trigger download
+			temp_link.click();
+			document.body.removeChild(temp_link);
+		}
+	</script>
+	
+		
+	</head>
+    <body>
+	
+	<div class="container">	
+	
+	<form>
+	<div><div>
+	<input class="form-control form-control-sm" type="text" placeholder="Nome">
+	</div>
+	<div>
+	<input class="form-control form-control-sm" type="text" placeholder="Andar">
+	</div>
+	</div>
+	
+	
+  <fieldset>
+  
+  <legend> Escolha as ocorrências </legend>  
+  
+  <br><br>
+  
+	<div class="form-check form-switch">
+	  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+	  <label class="form-check-label" for="flexSwitchCheckDefault">Limpeza do Local</label>
+	  <textarea class="form-control" aria-label="With textarea"></textarea>
+	</div>
+	
+	<div class="form-check form-switch">
+	  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+	  <label class="form-check-label" for="flexSwitchCheckDefault">Manutenção</label>
+	  <textarea class="form-control" aria-label="With textarea"></textarea>
+	</div>
+
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+      <label for = "music"> Reposição de insumos </label>
+	  <textarea class="form-control" aria-label="With textarea"></textarea>
+    </div>
+	
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+      <label for = "art"> Vazamento </label>
+	  <textarea class="form-control" aria-label="With textarea"></textarea>
+    </div>
+	
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+      <label for = "sports"> Falta de Energia / Lampada Queimada </label>
+	  <textarea class="form-control" aria-label="With textarea"></textarea>
+    </div>
+	
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+      <label for = "cooking"> Falta de Agua </label>
+	  <textarea class="form-control" aria-label="With textarea"></textarea>
+    </div>
+	
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+      <label for = "other"> Outro </label>
+      <textarea class="form-control" aria-label="With textarea"></textarea>
+    </div>
+	<br>
+	
+    <div>
+      <button class="btn btn-primary" type="submit" onclick="tableToCSV()">Enviar</button>
+    </div>
+	
+  </fieldset>
+</form>
+
+</div>
+	  
+	</body>
+	</html>
